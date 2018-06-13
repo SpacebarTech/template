@@ -20,15 +20,14 @@ app.set( 'view engine', 'pug' );
 // set any variables that must
 // be passed to pug files here
 app.use( ( req, { locals }, next ) => {
-
 	locals.env = process.env.NODE_ENV; // eslint-disable-line
 
 	next();
-
 } );
 
 // serve resources in /public with /static
 app.use( '/static', express.static( path.join( __dirname, 'public' ) ) );
+app.use( '/dist', express.static( path.join( __dirname, 'dist' ) ) );
 
 // parse all of our requests into JSON
 app.use( bodyParser.json() );
@@ -62,7 +61,5 @@ app.use( ( req, res ) => {
 const port = process.env.PORT;
 
 app.listen( port, () => {
-
 	console.log( `App running on port: ${port}` );
-
 } );

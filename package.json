@@ -6,7 +6,11 @@
   "scripts": {
     "postinstall": "sass --update public/sass:public/css",
     "lint": "eslint ./",
-    "test": "mocha --globals testApp,chai test/boot.js \"test/**/*_test.js\" --timeout 5000"
+    "test": "mocha --globals testApp,chai test/boot.js \"test/**/*_test.js\" --timeout 5000",
+    "listen": "nodemon --ignore dist -e .pug,.js",
+    "build": "npx webpack --watch --config helpers/webpack/config.js",
+    "watch-sass": "sass --watch public/sass:public/css",
+    "postlisten": "build"
   },
   "pre-commit": [
     "test"
@@ -52,6 +56,8 @@
     "eslint-plugin-mocha": "^4.11.0",
     "eslint-plugin-react": "^7.1.0",
     "mocha": "^3.5.3",
-    "pre-commit": "^1.2.2"
+    "pre-commit": "^1.2.2",
+    "webpack": "^4.12.0",
+    "webpack-cli": "^3.0.6"
   }
 }
